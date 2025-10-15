@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页面 - 个人网站</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav li {
+            margin: 0 15px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>我的个人主页</h1>
+        <p id="current-time"></p>
+        <nav>
+            <ul>
+                <li><a href="introduction.html">个人介绍</a></li>
+                <li><a href="#table-section">项目表格</a></li>
+                <li><a href="#form-section">联系表单</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="table-section">
+            <h2>我的项目列表</h2>
+            <p>这里展示我最近完成的一些项目。</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>项目类型</th>
+                        <th>完成日期</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>个人主页</td><td>前端开发</td><td>2025-01-10</td></tr>
+                    <tr><td>图书管理系统</td><td>后端开发</td><td>2024-12-05</td></tr>
+                    <tr><td>移动应用原型</td><td>UI/UX设计</td><td>2024-10-20</td></tr>
+                    <tr><td>数据分析报告</td><td>数据科学</td><td>2024-09-15</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <hr>
+
+        <section id="form-section">
+            <h2>联系我</h2>
+            <p>如果你有任何问题或合作意向，请填写下面的表单。</p>
+            <form id="contact-form">
+                <div>
+                    <label for="name">姓名：</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" id="name-error">姓名不能为空。</span>
+                </div>
+                <div>
+                    <label for="email">邮箱：</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" id="email-error">请输入有效的邮箱地址。</span>
+                </div>
+                <div>
+                    <label for="subject">主题：</label>
+                    <select id="subject" name="subject">
+                        <option value="question">提问</option>
+                        <option value="cooperation">合作</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="message">留言：</label>
+                    <textarea id="message" name="message" rows="5"></textarea>
+                </div>
+                <button type="submit" id="submit-button">提交</button>
+            </form>
+        </section>
+    </div>  
+
+    <footer>
+        <p>&copy; 2025 [你的名字]. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
