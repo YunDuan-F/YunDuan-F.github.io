@@ -1,0 +1,38 @@
+p {
+    text-indent: 2em;
+    color: #444;
+}
+
+ul li {
+    list-style-type: '👉 ';
+    margin-bottom: 8px;
+    padding-left: 5px;
+}
+
+ol li {
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    body {
+        margin: 10px;
+        padding: 10px;
+    }
+    h1 {
+        font-size: 1.5em;
+    }
+}
