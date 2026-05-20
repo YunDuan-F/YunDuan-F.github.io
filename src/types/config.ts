@@ -59,6 +59,7 @@ export type NavBarLink = {
 
 export type NavBarConfig = {
 	links: (NavBarLink | LinkPreset)[];
+	moreLinks?: NavBarLink[];
 };
 
 export type ProfileConfig = {

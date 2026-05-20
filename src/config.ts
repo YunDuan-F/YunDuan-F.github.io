@@ -10,7 +10,8 @@ import { LinkPreset } from "./types/config";
 export const siteConfig: SiteConfig = {
 	title: "YunDuan-F",
 	subtitle: "Personal Blog",
-	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
+	// EDIT HERE: default interface language. Use "en" for English navigation text.
+	lang: "en",
 	themeColor: {
 		// EDIT HERE: site theme color hue. It is fixed at 230 and visitors cannot change it.
 		hue: 230,
@@ -51,18 +52,26 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Home,
 		LinkPreset.Archive,
 		LinkPreset.About,
+	],
+	// EDIT HERE: navbar "More" dropdown items. Add future header dropdown links here.
+	moreLinks: [
 		{
-			name: "GitHub",
-			url: "https://github.com/YunDuan-F", // Internal links should not include the base path, as it is automatically added
-			external: true, // Show an external link icon and will open in a new tab
+			name: "Tools",
+			url: "/tools/",
+		},
+		{
+			name: "Friends",
+			url: "/friends/",
 		},
 	],
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	// EDIT HERE: sidebar avatar image. Relative to /src, or use an absolute /public path starting with "/".
+	avatar: "assets/images/Avatar/avatar.jpg",
 	name: "YunDuan-F",
-	bio: "记录技术、想法与工具。",
+	bio: "在这里记录一些东西",
+	// EDIT HERE: links displayed below the sidebar avatar.
 	links: [
 		{
 			name: "GitHub",

@@ -18,6 +18,8 @@ let links: NavBarLink[] = navBarConfig.links.map(
 		return item;
 	},
 );
+const moreLinks = navBarConfig.moreLinks ?? [];
+const mobileLinks = [...links, ...moreLinks];
 ---
 <div id="navbar" class="z-50 onload-animation">
     <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation -->
@@ -30,7 +32,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
                 {siteConfig.title}
             </div>
         </a>
-        <div class="hidden md:flex">
+        <div class="hidden md:flex items-center">
             {links.map((l) => {
                 return <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
                           class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
@@ -41,6 +43,38 @@ let links: NavBarLink[] = navBarConfig.links.map(
                     </div>
                 </a>;
             })}
+            {moreLinks.length > 0 && (
+                <div class="group/more relative">
+                    <button type="button" aria-haspopup="menu"
+                            class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95">
+                        <div class="flex items-center">
+                            More
+                            <Icon name="material-symbols:keyboard-arrow-down-rounded"
+                                  class="ml-1 text-[1.25rem] transition group-hover/more:rotate-180">
+                            </Icon>
+                        </div>
+                    </button>
+                    <div class="pointer-events-none absolute right-0 top-full z-50 min-w-40 pt-2 opacity-0 translate-y-1 transition-all
+                                group-hover/more:pointer-events-auto group-hover/more:opacity-100 group-hover/more:translate-y-0">
+                        <div class="card-base !overflow-visible p-2 shadow-xl dark:shadow-none">
+                            {moreLinks.map((l) => (
+                                <a aria-label={l.name}
+                                   href={l.external ? l.url : url(l.url)}
+                                   target={l.external ? "_blank" : null}
+                                   class="group/item flex items-center justify-between gap-8 rounded-lg px-3 py-2 font-bold text-black/75 transition
+                                          hover:bg-[var(--btn-plain-bg-hover)] hover:text-[var(--primary)]
+                                          active:bg-[var(--btn-plain-bg-active)] active:text-[var(--primary)]
+                                          dark:text-white/75">
+                                    <span class="whitespace-nowrap">{l.name}</span>
+                                    <Icon name={l.external ? "fa6-solid:arrow-up-right-from-square" : "material-symbols:chevron-right-rounded"}
+                                          class="text-[1rem] text-[var(--primary)] transition">
+                                    </Icon>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
         <div class="flex">
             <!--<SearchPanel client:load>-->
@@ -50,7 +84,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
                 <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
             </button>
         </div>
-        <NavMenuPanel links={links}></NavMenuPanel>
+        <NavMenuPanel links={mobileLinks}></NavMenuPanel>
     </div>
 </div>
 
