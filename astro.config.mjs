@@ -38,8 +38,11 @@ export default defineConfig({
 			// when the Tailwind class `transition-all` is used
 			containers: ["main", "#toc"],
 			smoothScrolling: true,
-			cache: true,
-			preload: true,
+			// GitHub Pages replaces hashed assets on each deploy. Keeping Swup's
+			// cached/preloaded pages can make a client-side navigation request an
+			// old CSS chunk that no longer exists, leaving the page unstyled.
+			cache: false,
+			preload: false,
 			accessibility: true,
 			updateHead: true,
 			updateBodyClass: false,
