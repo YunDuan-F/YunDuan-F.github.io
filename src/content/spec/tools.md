@@ -2,16 +2,14 @@
 
 Useful websites and tools collected for daily work.
 
-## Development
+| Name | Description | URL |
+|---|---|---|
+| Astro | Static site framework used by this blog. | https://astro.build/ |
+| GitHub Pages | Static hosting for this site. | https://pages.github.com/ |
+| Pagefind | Static search used by this blog. | https://pagefind.app/ |
 
-- [Astro](https://astro.build/) - Static site framework used by this blog.
-- [GitHub Pages](https://pages.github.com/) - Static hosting for this site.
-- [Pagefind](https://pagefind.app/) - Static search used by this blog.
+<!--
+Add a new tool by adding one row:
 
-## Notes
-
-Add new tools here with normal Markdown links:
-
-```md
-- [Tool Name](https://example.com/) - Short description.
-```
+| Tool Name | Short description. | https://example.com/ |
+-->
