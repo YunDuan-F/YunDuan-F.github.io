@@ -1,0 +1,225 @@
+.expressive-code {
+    margin: 1.35rem 0 1.85rem;
+
+    .frame {
+        --code-window-header-height: 2.6rem;
+
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--codeblock-border);
+        border-radius: 1rem;
+        background: var(--codeblock-bg);
+        box-shadow: 0 22px 48px -30px var(--codeblock-shadow-color);
+    }
+
+    .frame::after {
+        content: "";
+        position: absolute;
+        z-index: 4;
+        top: 0.92rem;
+        left: 1.25rem;
+        width: 0.72rem;
+        height: 0.72rem;
+        border-radius: 999px;
+        background: var(--codeblock-dot-red);
+        box-shadow: 1.05rem 0 0 var(--codeblock-dot-yellow), 2.1rem 0 0 var(--codeblock-dot-green);
+    }
+
+    .frame .header {
+        display: flex !important;
+        height: var(--code-window-header-height);
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0;
+        border: 0 !important;
+        border-bottom: 1px solid var(--codeblock-border) !important;
+        border-radius: 1rem 1rem 0 0 !important;
+        background: var(--codeblock-header-bg) !important;
+    }
+
+    .frame .header::before,
+    .frame .header::after,
+    .frame .header .title,
+    .frame .header .sr-only {
+        display: none !important;
+    }
+
+    .frame pre {
+        position: static !important;
+        margin: 0;
+        border: 0 !important;
+        border-radius: 0 0 1rem 1rem !important;
+        background: var(--codeblock-content-bg) !important;
+        scrollbar-color: oklch(0.74 0.040 var(--hue)) transparent;
+    }
+
+    .frame pre::-webkit-scrollbar {
+        height: 0.75rem;
+    }
+
+    .frame pre::-webkit-scrollbar-thumb {
+        border: 0.25rem solid transparent;
+        border-radius: 999px;
+        background: oklch(0.75 0.045 var(--hue));
+        background-clip: content-box;
+    }
+
+    .frame pre > code {
+        padding: 0.95rem 0 1.05rem !important;
+        font-size: 0.92rem;
+        line-height: 1.62rem;
+    }
+
+    .ec-line .gutter {
+        color: var(--codeblock-line-number) !important;
+        font-variant-numeric: tabular-nums;
+    }
+
+    .ec-line .gutter .ln {
+        min-width: 2.7rem;
+        padding-inline: 1.15rem 0.65rem;
+        text-align: right;
+    }
+
+    .ec-line .code {
+        padding-inline-start: calc(var(--ecIndent, 0ch) + 0.58rem) !important;
+        padding-inline-end: 1.35rem !important;
+        border-inline-start: 0 !important;
+    }
+
+    .ec-line.mark,
+    .ec-line.ins,
+    .ec-line.del {
+        background: oklch(0.90 0.040 var(--hue) / 0.48) !important;
+    }
+
+    .frame > .code-language-label {
+        position: absolute;
+        z-index: 4;
+        top: 0.87rem;
+        left: 5.25rem;
+        max-width: calc(100% - 12rem);
+        overflow: hidden;
+        color: var(--codeblock-title);
+        background: transparent;
+        font-family: Roboto, ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-transform: uppercase;
+        opacity: 1 !important;
+        pointer-events: none;
+    }
+
+    .frame pre[data-language]::before {
+        content: attr(data-language);
+        position: absolute;
+        z-index: 4;
+        top: 0.87rem;
+        left: 5.25rem;
+        max-width: calc(100% - 12rem);
+        overflow: hidden;
+        color: var(--codeblock-title);
+        background: transparent;
+        font-family: Roboto, ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-transform: uppercase;
+        opacity: 1 !important;
+        pointer-events: none;
+    }
+}
+
+.custom-md .expressive-code .frame > .copy-btn {
+        all: unset;
+        position: absolute;
+        z-index: 4;
+        top: 0.48rem;
+        right: 1.1rem;
+        display: flex;
+        width: 1.85rem;
+        height: 1.85rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        opacity: 1 !important;
+        transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.custom-md .expressive-code .frame > .copy-btn:hover {
+    background: var(--codeblock-control-hover) !important;
+}
+
+.custom-md .expressive-code .frame > .copy-btn:active {
+    transform: scale(0.92);
+}
+
+.custom-md .expressive-code .frame > .copy-btn .copy-btn-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 1.05rem;
+        height: 1.05rem;
+        transform: translate(-50%, -50%);
+        fill: var(--codeblock-control);
+        pointer-events: none;
+        transition: opacity 0.15s ease, fill 0.15s ease;
+}
+
+.custom-md .expressive-code .frame > .copy-btn .copy-icon {
+    fill: var(--codeblock-control) !important;
+    opacity: 1;
+}
+
+.custom-md .expressive-code .frame > .copy-btn.success .copy-icon {
+    opacity: 0;
+}
+
+.custom-md .expressive-code .frame > .copy-btn .success-icon {
+    fill: var(--primary) !important;
+    opacity: 0;
+}
+
+.custom-md .expressive-code .frame > .copy-btn.success .success-icon {
+    opacity: 1;
+}
+
+:root.dark .expressive-code {
+    .ec-line.mark,
+    .ec-line.ins,
+    .ec-line.del {
+        background: oklch(0.28 0.045 var(--hue) / 0.55) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .expressive-code {
+        margin: 1rem -0.25rem 1.35rem;
+
+        .frame {
+            border-radius: 0.85rem;
+        }
+
+        .ec-line .gutter .ln {
+            min-width: 2.35rem;
+            padding-inline: 0.8rem 0.55rem;
+        }
+
+        .frame > .code-language-label,
+        .frame pre[data-language]::before {
+            left: 4.95rem;
+            max-width: calc(100% - 8.5rem);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
