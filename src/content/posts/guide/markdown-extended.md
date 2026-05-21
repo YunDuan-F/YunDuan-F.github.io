@@ -6,42 +6,43 @@ description: 'Read more about Markdown features in Fuwari'
 image: ''
 tags: [Demo, Example, Markdown, Fuwari]
 category: 'Examples'
-draft: true
+draft: false
 ---
 
 ## GitHub Repository Cards
-You can add dynamic cards that link to GitHub repositories, on page load, the repository information is pulled from the GitHub API. 
+可以添加 链接到GitHub库的动态卡片，页面加载时，存储库信息将从 GitHub API 获取 
 
-::github{repo="Fabrizz/MMM-OnSpotify"}
+::github{repo="saicaca/fuwari"}
 
-Create a GitHub repository card with the code `::github{repo="<owner>/<repo>"}`.
+方法是： `::github{repo="<owner>/<repo>"}`.
 
 ```markdown
+例如：
 ::github{repo="saicaca/fuwari"}
 ```
 
 ## Admonitions
 
-Following types of admonitions are supported: `note` `tip` `important` `warning` `caution`
+支持一下几种警告: `note` `tip` `important` `warning` `caution`
 
 :::note
-Highlights information that users should take into account, even when skimming.
+突出显示即使快速浏览也应该考虑的信息.
 :::
 
 :::tip
-Optional information to help a user be more successful.
+可选信息，意在帮助用户.
 :::
 
 :::important
-Crucial information necessary for users to succeed.
+用户成功所需的关键信息.
 :::
 
 :::warning
-Critical content demanding immediate user attention due to potential risks.
+由于潜在风险，关键内容需要用户立即关注.
 :::
 
 :::caution
-Negative potential consequences of an action.
+做了某事到可能会导致某后果.
 :::
 
 ### Basic Syntax
@@ -58,7 +59,7 @@ Optional information to help a user be more successful.
 
 ### Custom Titles
 
-The title of the admonition can be customized.
+警告的标题可以自定义.
 
 :::note[MY CUSTOM TITLE]
 This is a note with a custom title.
@@ -85,7 +86,7 @@ This is a note with a custom title.
 
 ### Spoiler
 
-You can add spoilers to your text. The text also supports **Markdown** syntax.
+可以添加 spoilers. markdown 语法中也有文本
 
 The content :spoiler[is hidden **ayyy**]!
 

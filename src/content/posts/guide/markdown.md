@@ -5,6 +5,7 @@ description: A simple example of a Markdown blog post.
 tags: [Markdown, Blogging, Demo]
 category: Examples
 draft: false
+pinned: true
 ---
 
 # An h1 header
@@ -63,7 +64,7 @@ for i in range(10):
 
 嵌套列表：
 
-1. 收集：
+1. 第一步：
 
     - carrots
     - celery
@@ -140,4 +141,7 @@ $$
 
 可以使用反斜杠转义任何希望按字面意思显示的符号: \`foo\`, \*bar\*, etc.(这样例如foo就不会格式化了)
 
-更高级的写法在后续文章：
+更多的的写法： [Markdown Extended](/posts/guide/markdown-extended/)
+
+丰富的代码显示：[Expressive Code](/posts/guide/expressive-code/)
+

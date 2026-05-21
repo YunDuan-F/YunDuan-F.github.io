@@ -39,9 +39,26 @@
 
     .frame .header::before,
     .frame .header::after,
-    .frame .header .title,
     .frame .header .sr-only {
         display: none !important;
+    }
+
+    .frame .header .title {
+        display: block !important;
+        margin-left: 5.25rem;
+        max-width: calc(100% - 12rem);
+        overflow: hidden;
+        color: var(--codeblock-title) !important;
+        background: transparent !important;
+        font-family: Roboto, ui-sans-serif, system-ui, sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-transform: none;
+        opacity: 1 !important;
     }
 
     .frame pre {
@@ -135,6 +152,37 @@
         opacity: 1 !important;
         pointer-events: none;
     }
+
+    .frame.has-title > .code-language-label,
+    .frame.has-title pre[data-language]::before {
+        display: none !important;
+    }
+
+    .frame.frame-none {
+        overflow: visible;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .frame.frame-none::after,
+    .frame.frame-none .header,
+    .frame.frame-none > .code-language-label,
+    .frame.frame-none pre[data-language]::before {
+        display: none !important;
+    }
+
+    .frame.frame-none pre {
+        border: 1px solid var(--codeblock-border) !important;
+        border-radius: 0.75rem !important;
+        background: var(--codeblock-content-bg) !important;
+    }
+
+    .frame.frame-none pre > code {
+        padding-top: 0.9rem !important;
+    }
+
 }
 
 .custom-md .expressive-code .frame > .copy-btn {
@@ -214,6 +262,7 @@
         }
 
         .frame > .code-language-label,
+        .frame .header .title,
         .frame pre[data-language]::before {
             left: 4.95rem;
             max-width: calc(100% - 8.5rem);

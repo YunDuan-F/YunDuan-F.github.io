@@ -2,26 +2,31 @@
 title: Expressive Code Example
 published: 2024-04-10
 description: How code blocks look in Markdown using Expressive Code.
-tags: [Markdown, Blogging, Demo]
+tags:
+  - Markdown
+  - Blogging
+  - Demo
 category: Examples
-draft: true
+draft: false
 ---
 
-Here, we'll explore how code blocks look using [Expressive Code](https://expressive-code.com/). The provided examples are based on the official documentation, which you can refer to for further details.
+在这里探讨使用[Expressive Code](https://expressive-code.com/).来进行代码的渲染，所提供的示例均基于官方文档
 
 ## Expressive Code
 
-### Syntax Highlighting
+### 高亮语法
 
 [Syntax Highlighting](https://expressive-code.com/key-features/syntax-highlighting/)
 
-#### Regular syntax highlighting
+#### 常规代码语法
 
 ```js
 console.log('This code is syntax highlighted!')
 ```
 
-#### Rendering ANSI escape sequences
+#### 渲染 ANSI 转义序列
+
+这个写法挺奇怪的，我应该用不到
 
 ```ansi
 ANSI colors:
@@ -70,6 +75,8 @@ Write-Output "This one has a title!"
 ```
 
 #### Overriding frame types
+这个在 npm run dev  下没有效果
+在 npm run preview 才能看的出来
 
 ```sh frame="none"
 echo "Look ma, no frame!"
@@ -154,8 +161,8 @@ function demo() {
 #### Using diff-like syntax
 
 ```diff
-+this line will be marked as inserted
--this line will be marked as deleted
++ this line will be marked as inserted
+- this line will be marked as deleted
 this is a regular line
 ```
 
@@ -234,7 +241,7 @@ function getLongString() {
 }
 ```
 
-#### Configuring indentation of wrapped lines
+#### 换行缩进
 
 ```js wrap preserveIndent
 // Example with preserveIndent (enabled by default)
