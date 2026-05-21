@@ -1,16 +1,39 @@
 ---
-title: Simple Guides for Fuwari
-published: 2024-04-01
-description: "How to use this blog template."
-image: "./cover.jpeg"
-tags: ["Fuwari", "Blogging", "Customization"]
-category: Guides
-draft: true
+title: Hello World
+published: 2024-02-28
+description: 引导与内容测试
+image: "./guide.jpg"
+tags: ["Guide", "Test"]
+category: Test
+draft: false
+pinned: true
+license:
+    name: "Test"
+    url: "https://astro.build/"
+
 ---
 
-> Cover image source: [Source](https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/208fc754-890d-4adb-9753-2c963332675d/width=2048/01651-1456859105-(colour_1.5),girl,_Blue,yellow,green,cyan,purple,red,pink,_best,8k,UHD,masterpiece,male%20focus,%201boy,gloves,%20ponytail,%20long%20hair,.jpeg)
+> 图片存在于当前路径下，似乎也可以放置远程图片
 
-This blog template is built with [Astro](https://astro.build/). For the things that are not mentioned in this guide, you may find the answers in the [Astro Docs](https://docs.astro.build/).
+Welcome to [Astro](https://astro.build/) and [Fuwari](https://github.com/saicaca/fuwari). 
+
+# Guides
+写 blog 基础使用方式
+具体markdown 格式看：[Markdown Example](/posts/guide/markdown/)
+## Front-matter of Posts
+
+```yaml
+---
+title: My First Blog Post
+published: 2023-09-09
+description: This is the first post of my new Astro blog.
+image: ./cover.jpg
+tags: [Foo, Bar]
+category: Front-end
+draft: false
+pinned: true
+---
+```
 
 ## Front-matter of Posts
 
@@ -23,9 +46,10 @@ image: ./cover.jpg
 tags: [Foo, Bar]
 category: Front-end
 draft: false
+license：false
 ---
 ```
-
+标识含义：
 | Attribute     | Description                                                                                                                                                                                                 |
 |---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `title`       | The title of the post.                                                                                                                                                                                      |
@@ -35,13 +59,13 @@ draft: false
 | `tags`        | The tags of the post.                                                                                                                                                                                       |
 | `category`    | The category of the post.                                                                                                                                                                                   |
 | `draft`        | If this post is still a draft, which won't be displayed.                                                                                                                                                    |
+|`pinned`| 表示文章是否为置顶|
+|`license`| 表示文章协议内容:<br/>false 表示不显示协议<br/>不写代表默认协议CC BY-NC-SA 4.0<br/>更改协议使用：<br/>license:<br/>  name: "CC BY 4.0"<br/>  url: "https://creativecommons.org/licenses/by/4.0/" 注意url:与name: 后面是有空格的|
+
+
 
 ## Where to Place the Post Files
-
-
-
-Your post files should be placed in `src/content/posts/` directory. You can also create sub-directories to better organize your posts and assets.
-
+文章放在  `src/content/posts/` 目录 ，也可在其中创建子目录进行文章管理
 ```
 src/content/posts/
 ├── post-1.md
@@ -49,3 +73,40 @@ src/content/posts/
     ├── cover.png
     └── index.md
 ```
+
+# Draft 
+当draft 被标记为 true 意味着此文章不会公开
+想要公开则 更改 draft true -> false 即可
+```markdown
+---
+title: Draft Example
+published: 2024-01-11T04:40:26.381Z
+tags: [Markdown, Blogging, Demo]
+category: Examples
+draft: false
+---
+```
+
+# VideoTest
+
+仅将视频链接直接复制到如下格式的src中即可
+
+```yaml
+---
+title: Include Video in the Post
+published: 2023-10-19
+// ...
+---
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/5gIf0_xpFPI?si=N1WTorLKL0uwLsU_" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+```
+## YouTube
+
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/5gIf0_xpFPI?si=N1WTorLKL0uwLsU_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Bilibili
+
+<iframe width="100%" height="468" src="//player.bilibili.com/player.html?bvid=BV1fK4y1s7Qf&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+
+

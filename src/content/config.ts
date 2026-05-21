@@ -12,6 +12,15 @@ const postsCollection = defineCollection({
 		tags: z.array(z.string()).optional().default([]),
 		category: z.string().optional().nullable().default(""),
 		lang: z.string().optional().default(""),
+		license: z
+			.union([
+				z.boolean(),
+				z.object({
+					name: z.string().optional(),
+					url: z.string().optional(),
+				}),
+			])
+			.optional(),
 
 		/* For internal use */
 		prevTitle: z.string().default(""),

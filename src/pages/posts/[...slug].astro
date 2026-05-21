@@ -26,6 +26,15 @@ const { entry } = Astro.props;
 const { Content, headings } = await entry.render();
 
 const { remarkPluginFrontmatter } = await entry.render();
+const postLicense = entry.data.license;
+const hasPostLicenseOverride = typeof postLicense === "object" && postLicense !== null;
+const shouldShowLicense = licenseConfig.enable && postLicense !== false;
+const licenseName = hasPostLicenseOverride
+	? postLicense.name || licenseConfig.name
+	: licenseConfig.name;
+const licenseUrl = hasPostLicenseOverride
+	? postLicense.url || licenseConfig.url
+	: licenseConfig.url;
 
 const jsonLd = {
 	"@context": "https://schema.org",
@@ -106,7 +115,7 @@ const jsonLd = {
                 <Content />
             </Markdown>
 
-            {licenseConfig.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container onload-animation"></License>}
+            {shouldShowLicense && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} licenseName={licenseName} licenseUrl={licenseUrl} class="mb-6 rounded-xl license-container onload-animation"></License>}
 
         </div>
     </div>
