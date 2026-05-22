@@ -1,0 +1,43 @@
+---
+import { giscusConfig } from "../../config";
+
+interface Props {
+	class?: string;
+}
+
+const className = Astro.props.class || "";
+const conf = giscusConfig;
+const enabled =
+	conf.enable &&
+	conf.repo.trim() &&
+	conf.repoId.trim() &&
+	conf.category.trim() &&
+	conf.categoryId.trim();
+---
+
+{
+	enabled && (
+		<section
+			id="giscus-comments"
+			class={`card-base px-5 py-5 md:px-6 ${className}`}
+			data-repo={conf.repo}
+			data-repo-id={conf.repoId}
+			data-category={conf.category}
+			data-category-id={conf.categoryId}
+			data-mapping={conf.mapping}
+			data-strict={conf.strict}
+			data-reactions-enabled={conf.reactionsEnabled}
+			data-emit-metadata={conf.emitMetadata}
+			data-input-position={conf.inputPosition}
+			data-theme={conf.theme}
+			data-lang={conf.lang}
+			data-loading={conf.loading}
+		>
+			<div class="mb-4 flex items-center justify-between gap-3">
+				<div class="text-lg font-bold text-black/80 transition dark:text-white/80">Comments</div>
+				<div class="h-1.5 w-10 rounded-full bg-[var(--primary)] opacity-70 transition"></div>
+			</div>
+			<div class="giscus"></div>
+		</section>
+	)
+}

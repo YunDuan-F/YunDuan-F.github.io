@@ -571,3 +571,91 @@ if (window.swup) {
 	document.addEventListener("swup:enable", setup)
 }
 </script>
+
+<script>
+const giscusScriptUrl = "https://giscus.app/client.js"
+const giscusWindow = window as Window & {
+	__yunduanGiscusInitialized?: boolean
+	__yunduanGiscusObserver?: MutationObserver
+}
+
+function resolveGiscusTheme(theme: string) {
+	if (theme !== "preferred_color_scheme") return theme
+	return document.documentElement.classList.contains("dark") ? "dark" : "light"
+}
+
+function setGiscusTheme(root: HTMLElement) {
+	const iframe = document.querySelector("iframe.giscus-frame") as HTMLIFrameElement | null
+	if (!iframe) return
+	iframe.contentWindow?.postMessage(
+		{
+			giscus: {
+				setConfig: {
+					theme: resolveGiscusTheme(root.dataset.theme || "preferred_color_scheme"),
+				},
+			},
+		},
+		"https://giscus.app",
+	)
+}
+
+function loadGiscusComments() {
+	const root = document.getElementById("giscus-comments")
+	if (!root) return
+
+	const container = root.querySelector(".giscus")
+	if (!container) return
+	if (container.querySelector("iframe.giscus-frame")) {
+		setGiscusTheme(root)
+		return
+	}
+
+	container.replaceChildren()
+
+	const script = document.createElement("script")
+	script.src = giscusScriptUrl
+	script.async = true
+	script.crossOrigin = "anonymous"
+	script.setAttribute("data-repo", root.dataset.repo || "")
+	script.setAttribute("data-repo-id", root.dataset.repoId || "")
+	script.setAttribute("data-category", root.dataset.category || "")
+	script.setAttribute("data-category-id", root.dataset.categoryId || "")
+	script.setAttribute("data-mapping", root.dataset.mapping || "pathname")
+	script.setAttribute("data-strict", root.dataset.strict || "0")
+	script.setAttribute("data-reactions-enabled", root.dataset.reactionsEnabled || "1")
+	script.setAttribute("data-emit-metadata", root.dataset.emitMetadata || "0")
+	script.setAttribute("data-input-position", root.dataset.inputPosition || "bottom")
+	script.setAttribute("data-theme", resolveGiscusTheme(root.dataset.theme || "preferred_color_scheme"))
+	script.setAttribute("data-lang", root.dataset.lang || "en")
+	script.setAttribute("data-loading", root.dataset.loading || "lazy")
+	container.appendChild(script)
+}
+
+function initGiscusComments() {
+	if (giscusWindow.__yunduanGiscusInitialized) return
+	giscusWindow.__yunduanGiscusInitialized = true
+
+	loadGiscusComments()
+	document.addEventListener("astro:page-load", loadGiscusComments)
+	document.addEventListener("swup:content:replace", () => requestAnimationFrame(loadGiscusComments))
+
+	if (window.swup?.hooks) {
+		window.swup.hooks.on("page:view", loadGiscusComments)
+	} else {
+		document.addEventListener("swup:enable", () => window.swup?.hooks?.on("page:view", loadGiscusComments), { once: true })
+	}
+
+	if (!giscusWindow.__yunduanGiscusObserver) {
+		giscusWindow.__yunduanGiscusObserver = new MutationObserver(() => {
+			const root = document.getElementById("giscus-comments")
+			if (root) setGiscusTheme(root)
+		})
+		giscusWindow.__yunduanGiscusObserver.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		})
+	}
+}
+
+initGiscusComments()
+</script>

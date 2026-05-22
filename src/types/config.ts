@@ -79,6 +79,22 @@ export type LicenseConfig = {
 	url: string;
 };
 
+export type GiscusConfig = {
+	enable: boolean;
+	repo: string;
+	repoId: string;
+	category: string;
+	categoryId: string;
+	mapping: "pathname" | "url" | "title" | "og:title" | "specific" | "number";
+	strict: "0" | "1";
+	reactionsEnabled: "0" | "1";
+	emitMetadata: "0" | "1";
+	inputPosition: "top" | "bottom";
+	theme: string;
+	lang: string;
+	loading: "lazy" | "eager";
+};
+
 export type LIGHT_DARK_MODE =
 	| typeof LIGHT_MODE
 	| typeof DARK_MODE
@@ -92,6 +108,7 @@ export type BlogPostData = {
 	tags: string[];
 	draft?: boolean;
 	pinned?: boolean;
+	comments?: boolean;
 	image?: string;
 	category?: string;
 	prevTitle?: string;
