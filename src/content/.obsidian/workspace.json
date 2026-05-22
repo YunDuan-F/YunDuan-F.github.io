@@ -93,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "213df98ce51dd6a6",
@@ -185,10 +185,13 @@
   },
   "active": "3b082231c2deae7c",
   "lastOpenFiles": [
+    "posts/天空盒/图片/AT4.png",
+    "posts/天空盒/图片/AT2.png",
+    "posts/天空盒/大气散射.md",
+    "posts/天空盒/图片/AT3.png",
     "posts/天空盒/图片/AtmosphericTrans.png",
     "posts/天空盒/图片/desmos.png",
     "posts/天空盒/图片/AtmosphericTransmittance.png",
-    "posts/天空盒/大气散射.md",
     "desmos-graph.png",
     "posts/天空盒/未命名 1.md",
     "图片/Pasted.md",
