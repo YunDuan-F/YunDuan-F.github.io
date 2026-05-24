@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "posts/天空盒/大气散射.md",
+                "file": "spec/tools.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "大气散射"
+              "title": "tools"
             }
           }
         ],
@@ -185,9 +185,11 @@
   },
   "active": "3b082231c2deae7c",
   "lastOpenFiles": [
+    "spec/about.md",
+    "spec/friends.md",
+    "posts/天空盒/大气散射.md",
     "posts/天空盒/图片/desmos.png",
     "posts/guide/hello-world.md",
-    "posts/天空盒/大气散射.md",
     "posts/天空盒/图片/AT5.png",
     "posts/guide/markdown.md",
     "posts/guide/markdown-extended.md",
@@ -207,8 +209,6 @@
     "posts/天空盒",
     "posts/未命名.md",
     "2024-04-10.md",
-    "spec/tools.md",
-    "spec/friends.md",
-    "spec/about.md"
+    "spec/tools.md"
   ]
 }

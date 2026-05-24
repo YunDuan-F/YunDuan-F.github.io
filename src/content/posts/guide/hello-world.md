@@ -50,7 +50,6 @@ license：false
 | `draft`        | If this post is still a draft, which won't be displayed.                                                                                                                                                    |
 |`pinned`| 表示文章是否为置顶|
 |`license`| 表示文章协议内容:<br/>false 表示不显示协议<br/>不写代表默认协议CC BY-NC-SA 4.0<br/>更改协议使用：<br/>license:<br/>  name: "CC BY 4.0"<br/>  url: "https://creativecommons.org/licenses/by/4.0/" 注意url:与name: 后面是有空格的|
-
 | `comments` |表示是否开启评论区|
 
 
