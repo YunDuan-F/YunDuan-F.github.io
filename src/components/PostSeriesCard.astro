@@ -1,0 +1,83 @@
+---
+import { Icon } from "astro-icon/components";
+import type { PostSeries } from "@utils/content-utils";
+import { getPostUrlBySlug } from "@utils/url-utils";
+
+interface Props {
+	series: PostSeries;
+	class?: string;
+}
+
+const { series } = Astro.props;
+const className = Astro.props.class;
+---
+
+<section class:list={["series-card rounded-2xl border border-[var(--line-divider)] bg-[var(--btn-plain-bg-hover)] px-4 py-4 md:px-5", className]}>
+	<details class="series-details">
+		<summary class="series-summary -m-2 mb-1 flex cursor-pointer list-none flex-wrap items-center justify-between gap-2 rounded-xl p-2 transition hover:bg-[var(--primary)]/10">
+			<div class="flex min-w-0 items-center gap-2">
+				<div class="flex size-8 shrink-0 items-center justify-center rounded-xl bg-[var(--primary)]/10 text-[var(--primary)]">
+					<Icon name="material-symbols:format-list-bulleted-rounded" class="text-lg" />
+				</div>
+				<div class="min-w-0">
+					<div class="text-xs font-medium uppercase tracking-wide text-black/40 dark:text-white/40">Series</div>
+					<div class="truncate text-base font-bold text-black/80 dark:text-white/80">{series.name}</div>
+				</div>
+			</div>
+			<div class="flex shrink-0 items-center gap-2">
+				<div class="rounded-full bg-[var(--primary)]/10 px-3 py-1 text-sm font-semibold text-[var(--primary)]">
+					{series.currentIndex} / {series.posts.length}
+				</div>
+				<Icon name="material-symbols:expand-more-rounded" class="series-toggle text-2xl text-[var(--primary)] transition" />
+			</div>
+		</summary>
+
+		<div class="series-list mt-3 flex flex-col gap-2">
+			{series.posts.map((post) => (
+				post.isCurrent ? (
+					<div class="series-item series-current flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-[var(--primary)]">
+						<span class="series-order flex size-7 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)] text-xs font-bold text-white">
+							{post.order}
+						</span>
+						<span class="min-w-0 flex-1 truncate">{post.title}</span>
+						<span class="shrink-0 text-xs font-medium text-[var(--primary)]/70">Current</span>
+					</div>
+				) : (
+					<a href={getPostUrlBySlug(post.slug)} class="series-item flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-black/70 transition hover:bg-[var(--primary)]/10 hover:text-[var(--primary)] active:scale-[0.99] dark:text-white/70">
+						<span class="series-order flex size-7 shrink-0 items-center justify-center rounded-lg bg-black/5 text-xs font-bold text-black/40 transition dark:bg-white/10 dark:text-white/40">
+							{post.order}
+						</span>
+						<span class="min-w-0 flex-1 truncate">{post.title}</span>
+						<Icon name="material-symbols:chevron-right-rounded" class="shrink-0 text-xl opacity-45" />
+					</a>
+				)
+			))}
+		</div>
+	</details>
+</section>
+
+<style>
+	.series-card {
+		box-shadow: 0 12px 32px color-mix(in oklch, var(--primary) 8%, transparent);
+	}
+
+	.series-summary::-webkit-details-marker {
+		display: none;
+	}
+
+	.series-details:not([open]) .series-toggle {
+		transform: rotate(-90deg);
+	}
+
+	.series-current {
+		background:
+			linear-gradient(90deg, color-mix(in oklch, var(--primary) 18%, transparent), transparent 70%),
+			color-mix(in oklch, var(--primary) 8%, transparent);
+		box-shadow: inset 3px 0 0 var(--primary);
+	}
+
+	.series-item:hover .series-order {
+		background: var(--primary);
+		color: white;
+	}
+</style>

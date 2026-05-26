@@ -5,6 +5,9 @@ description: A simple example of a Markdown blog post.
 tags: [Markdown, Blogging, Demo]
 category: Examples
 draft: false
+series:
+  name: "语法"
+  order: 1
 ---
 
 # An h1 header

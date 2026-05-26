@@ -38,6 +38,55 @@ export type PostForList = {
 	slug: string;
 	data: CollectionEntry<"posts">["data"];
 };
+
+export type SeriesPost = {
+	slug: string;
+	title: string;
+	order: number;
+	isCurrent: boolean;
+};
+
+export type PostSeries = {
+	name: string;
+	currentIndex: number;
+	posts: SeriesPost[];
+};
+
+export async function getPostSeries(
+	currentPost: CollectionEntry<"posts">,
+): Promise<PostSeries | null> {
+	const currentSeries = currentPost.data.series;
+	if (!currentSeries) return null;
+
+	const allBlogPosts = await getCollection("posts", ({ data }) => {
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
+
+	const posts = allBlogPosts
+		.filter((post) => post.data.series?.name === currentSeries.name)
+		.sort((a, b) => {
+			const orderDiff = (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0);
+			if (orderDiff !== 0) return orderDiff;
+			const dateA = new Date(a.data.published);
+			const dateB = new Date(b.data.published);
+			return dateA.getTime() - dateB.getTime();
+		})
+		.map((post) => ({
+			slug: post.slug,
+			title: post.data.title,
+			order: post.data.series?.order ?? 0,
+			isCurrent: post.slug === currentPost.slug,
+		}));
+
+	if (posts.length === 0) return null;
+
+	return {
+		name: currentSeries.name,
+		currentIndex: posts.findIndex((post) => post.isCurrent) + 1,
+		posts,
+	};
+}
+
 export async function getSortedPostsList(): Promise<PostForList[]> {
 	const sortedFullPosts = await getRawSortedPosts();
 

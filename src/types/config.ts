@@ -111,6 +111,10 @@ export type BlogPostData = {
 	comments?: boolean;
 	image?: string;
 	category?: string;
+	series?: {
+		name: string;
+		order: number;
+	};
 	prevTitle?: string;
 	prevSlug?: string;
 	nextTitle?: string;

@@ -8,6 +8,9 @@ tags:
   - Demo
 category: Examples
 draft: false
+series:
+  name: "语法"
+  order: 3
 ---
 
 在这里探讨使用[Expressive Code](https://expressive-code.com/).来进行代码的渲染，所提供的示例均基于官方文档

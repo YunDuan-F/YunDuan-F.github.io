@@ -185,9 +185,10 @@
   },
   "active": "3b082231c2deae7c",
   "lastOpenFiles": [
-    "posts/天空盒/图片/image.png",
     "spec/about.md",
     "spec/friends.md",
+    "spec/tools.md",
+    "posts/天空盒/图片/image.png",
     "posts/天空盒/大气散射.md",
     "posts/天空盒/图片/desmos.png",
     "posts/guide/hello-world.md",
@@ -204,12 +205,10 @@
     "posts/天空盒/未命名 1.md",
     "图片",
     "posts/天空盒/图片/20260521203314.png",
-    "posts/天空盒/图片/Pasted image 20260521203314.png",
     "posts/天空盒/图片",
     "posts/guide/expressive-code.md",
     "posts/天空盒",
     "posts/未命名.md",
-    "2024-04-10.md",
-    "spec/tools.md"
+    "2024-04-10.md"
   ]
 }
