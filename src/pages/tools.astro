@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import Giscus from "@components/misc/Giscus.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { parseMarkdownLinkCardPage } from "@utils/markdown-table";
 
@@ -40,4 +41,5 @@ const page = parseMarkdownLinkCardPage(
 			</div>
 		</div>
 	</div>
+	<Giscus class="mt-4 rounded-xl onload-animation" />
 </MainGridLayout>

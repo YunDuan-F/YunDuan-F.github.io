@@ -46,14 +46,15 @@ const { remarkPluginFrontmatter } = await entry.render();
 <div
     class:list={["group card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative cursor-pointer hover:-translate-y-0.5 active:translate-y-0", className]}
     style={style}
+    data-post-card
 >
     <a href={url} aria-label={`Read ${title}`} class="absolute inset-0 z-10"></a>
     {pinned && (
-        <div class="pointer-events-none absolute left-0 top-0 z-20 rounded-br-2xl bg-gradient-to-r from-[oklch(0.72_0.13_var(--hue))] to-[oklch(0.82_0.13_calc(var(--hue)_+_55))] px-4 py-2 text-sm font-bold text-white shadow-lg shadow-[oklch(0.75_0.12_var(--hue)_/_0.25)]">
+        <div class="pinned-badge pointer-events-none absolute left-0 top-0 z-50 rounded-br-2xl bg-gradient-to-r from-[oklch(0.72_0.13_var(--hue))] to-[oklch(0.82_0.13_calc(var(--hue)_+_55))] px-4 py-2 text-sm font-bold text-white shadow-lg shadow-[oklch(0.75_0.12_var(--hue)_/_0.25)]">
             置顶
         </div>
     )}
-    <div class:list={["pointer-events-none relative z-20 pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6", {"pt-12 md:pt-12": pinned, "w-full": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]} >
+    <div class:list={["post-card-content pointer-events-none relative z-20 pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6", {"pt-12 md:pt-12": pinned, "w-full": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]} >
         <div
            class="transition w-full block font-bold mb-3 text-3xl text-90
         group-hover:text-[var(--primary)] dark:group-hover:text-[var(--primary)]
@@ -89,8 +90,8 @@ const { remarkPluginFrontmatter } = await entry.render();
 
     {hasCover && <div
                     class:list={[
-                        "pointer-events-none z-20",
-                        "max-h-[20vh] md:max-h-none mx-4 mt-4 -mb-2 md:mb-0 md:mx-0 md:mt-0",
+                        "post-card-cover pointer-events-none z-20",
+                        "aspect-[16/9] w-auto mx-4 mt-4 -mb-2 md:aspect-auto md:max-h-none md:mb-0 md:mx-0 md:mt-0",
                         "md:w-[var(--coverWidth)] relative md:absolute md:top-3 md:bottom-3 md:right-3 rounded-xl overflow-hidden active:scale-95"
                     ]} >
         <div class="absolute pointer-events-none z-10 w-full h-full group-hover:bg-black/20 group-active:bg-black/35 transition"></div>
@@ -102,4 +103,31 @@ const { remarkPluginFrontmatter } = await entry.render();
 <div class="transition border-t-[1px] border-dashed mx-6 border-black/10 dark:border-white/[0.15] last:border-t-0 md:hidden"></div>
 
 <style define:vars={{coverWidth}}>
+    [data-post-card] {
+        container-type: inline-size;
+    }
+
+    .post-card-cover {
+        background: color-mix(in oklch, var(--primary) 8%, transparent);
+    }
+
+    .post-card-cover :global(img),
+    .post-card-cover :global(picture),
+    .post-card-cover :global(picture img) {
+        object-fit: contain;
+    }
+
+    @media (min-width: 768px) {
+        .post-card-cover :global(img),
+        .post-card-cover :global(picture),
+        .post-card-cover :global(picture img) {
+            object-fit: cover;
+        }
+    }
+
+    @container (max-width: 820px) {
+        .post-card-cover {
+            display: none;
+        }
+    }
 </style>
