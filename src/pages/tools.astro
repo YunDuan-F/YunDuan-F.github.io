@@ -1,5 +1,6 @@
 ---
 import { getEntry } from "astro:content";
+import Giscus from "@components/misc/Giscus.astro";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { parseMarkdownLinkCardPage } from "@utils/markdown-table";
 
@@ -18,20 +19,27 @@ const page = parseMarkdownLinkCardPage(
 
 <MainGridLayout title={page.title} description={page.description}>
 	<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
-		<div class="card-base z-10 px-6 py-6 md:px-9 md:py-8 relative w-full">
-			<div class="mb-6">
-				<h1 class="mb-2 text-3xl font-bold text-black/90 transition dark:text-white/90">{page.title}</h1>
-				<p class="text-50 transition">{page.description}</p>
+		<div class="card-base z-10 px-5 py-6 md:px-9 md:py-8 relative w-full">
+			<div class="mb-8 border-b border-[var(--line-divider)] pb-4">
+				<h1 class="flex items-center gap-3 text-3xl font-bold text-black/90 transition dark:text-white/90">
+					<span class="text-[2.1rem] leading-none text-[var(--primary)] opacity-75">#</span>
+					<span>{page.title}</span>
+				</h1>
+				<div class="mt-3 h-1.5 w-7 rounded-full bg-[var(--primary)] shadow-[0_4px_12px_oklch(0.7_0.14_var(--hue)_/_0.45)]"></div>
+				<p class="mt-3 text-50 transition">{page.description}</p>
 			</div>
-			<div class="grid gap-3 md:grid-cols-2">
+			<div class="grid gap-4 md:grid-cols-2 md:gap-x-5 md:gap-y-5">
 				{page.cards.map((tool) => (
 					<a href={tool.url} target="_blank" rel="noopener noreferrer"
-					   class="btn-card group block rounded-xl p-4 text-left active:scale-[0.99]">
-						<div class="font-bold text-black/80 transition group-hover:text-[var(--primary)] dark:text-white/80">{tool.name}</div>
-						<div class="mt-1 text-sm text-50 transition">{tool.description}</div>
+					   class="group flex min-h-[5.35rem] items-center rounded-xl border border-black/5 bg-[var(--card-bg)] px-5 py-4 text-left shadow-[0_8px_22px_rgba(0,0,0,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(0,0,0,0.10)] active:scale-[0.99] dark:border-white/10 dark:shadow-none dark:hover:bg-[var(--btn-card-bg-hover)]">
+						<div class="min-w-0">
+							<div class="truncate text-base font-bold text-[var(--primary)] transition group-hover:text-[var(--title-active)]">{tool.name}</div>
+							<div class="mt-1 line-clamp-2 text-sm leading-6 text-50 transition">{tool.description}</div>
+						</div>
 					</a>
 				))}
 			</div>
 		</div>
 	</div>
+	<Giscus class="mt-4 rounded-xl onload-animation" />
 </MainGridLayout>

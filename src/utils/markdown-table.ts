@@ -2,6 +2,7 @@ export interface MarkdownLinkCard {
 	name: string;
 	description: string;
 	url: string;
+	avatar?: string;
 }
 
 export interface MarkdownLinkCardPage {
@@ -66,6 +67,7 @@ export function parseMarkdownLinkCardPage(
 	const nameIndex = headers.indexOf("name");
 	const descriptionIndex = headers.indexOf("description");
 	const urlIndex = headers.indexOf("url");
+	const avatarIndex = headers.indexOf("avatar");
 
 	const cards: MarkdownLinkCard[] = [];
 	for (const line of lines.slice(tableHeaderIndex + 2)) {
@@ -74,11 +76,13 @@ export function parseMarkdownLinkCardPage(
 		const name = cells[nameIndex];
 		const cardDescription = cells[descriptionIndex];
 		const url = cells[urlIndex];
+		const avatar = avatarIndex === -1 ? "" : cells[avatarIndex];
 		if (!name || !url) continue;
 		cards.push({
 			name: stripMarkdownLink(name),
 			description: cardDescription || "",
 			url,
+			avatar: avatar || undefined,
 		});
 	}
 
