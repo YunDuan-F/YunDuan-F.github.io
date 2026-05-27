@@ -13,6 +13,12 @@ const postsCollection = defineCollection({
 		tags: z.array(z.string()).optional().default([]),
 		category: z.string().optional().nullable().default(""),
 		lang: z.string().optional().default(""),
+		series: z
+			.object({
+				name: z.string(),
+				order: z.number(),
+			})
+			.optional(),
 		license: z
 			.union([
 				z.boolean(),

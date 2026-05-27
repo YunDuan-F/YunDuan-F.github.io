@@ -49,11 +49,7 @@ export const siteConfig: SiteConfig = {
 };
 
 export const navBarConfig: NavBarConfig = {
-	links: [
-		LinkPreset.Home,
-		LinkPreset.Archive,
-		LinkPreset.About,
-	],
+	links: [LinkPreset.Home, LinkPreset.Archive, LinkPreset.About],
 	// EDIT HERE: navbar "More" dropdown items. Add future header dropdown links here.
 	moreLinks: [
 		{

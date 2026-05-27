@@ -36,8 +36,10 @@ export function parseMarkdownLinkCardPage(
 ): MarkdownLinkCardPage {
 	const lines = body.split(/\r?\n/);
 	const title =
-		lines.find((line) => line.startsWith("# "))?.replace(/^#\s+/, "").trim() ||
-		fallbackTitle;
+		lines
+			.find((line) => line.startsWith("# "))
+			?.replace(/^#\s+/, "")
+			.trim() || fallbackTitle;
 
 	const tableHeaderIndex = lines.findIndex((line, index) => {
 		if (!line.includes("|") || !lines[index + 1]) return false;

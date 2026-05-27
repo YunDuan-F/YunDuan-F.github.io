@@ -7,6 +7,9 @@ image: ''
 tags: [Demo, Example, Markdown, Fuwari]
 category: 'Examples'
 draft: false
+series:
+  name: "语法"
+  order: 2
 ---
 
 ## GitHub Repository Cards
