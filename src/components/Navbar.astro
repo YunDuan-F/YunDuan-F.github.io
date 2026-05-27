@@ -78,8 +78,8 @@ const mobileLinks = [...links, ...moreLinks];
         </div>
         <div class="flex">
             <!--<SearchPanel client:load>-->
-            <Search client:only="svelte"></Search>
-            <LightDarkSwitch client:only="svelte"></LightDarkSwitch>
+            <Search client:load></Search>
+            <LightDarkSwitch client:load></LightDarkSwitch>
             <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
                 <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
             </button>
