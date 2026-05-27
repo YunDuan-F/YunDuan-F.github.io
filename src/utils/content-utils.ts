@@ -65,7 +65,8 @@ export async function getPostSeries(
 	const posts = allBlogPosts
 		.filter((post) => post.data.series?.name === currentSeries.name)
 		.sort((a, b) => {
-			const orderDiff = (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0);
+			const orderDiff =
+				(a.data.series?.order ?? 0) - (b.data.series?.order ?? 0);
 			if (orderDiff !== 0) return orderDiff;
 			const dateA = new Date(a.data.published);
 			const dateB = new Date(b.data.published);

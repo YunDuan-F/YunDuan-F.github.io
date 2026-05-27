@@ -30,7 +30,8 @@ const { Content, headings } = await entry.render();
 const { remarkPluginFrontmatter } = await entry.render();
 const series = await getPostSeries(entry);
 const postLicense = entry.data.license;
-const hasPostLicenseOverride = typeof postLicense === "object" && postLicense !== null;
+const hasPostLicenseOverride =
+	typeof postLicense === "object" && postLicense !== null;
 const shouldShowLicense = licenseConfig.enable && postLicense !== false;
 const licenseName = hasPostLicenseOverride
 	? postLicense.name || licenseConfig.name
