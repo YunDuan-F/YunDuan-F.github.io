@@ -112,7 +112,7 @@ export default defineConfig({
 			parseDirectiveNode,
 		],
 		rehypePlugins: [
-			rehypeKatex,
+			[rehypeKatex, { output: "html" }],
 			rehypeSlug,
 			[
 				rehypeComponents,
