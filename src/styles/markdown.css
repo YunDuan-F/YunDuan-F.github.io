@@ -115,10 +115,12 @@
 
     }
 
-    .katex-display-container {
+    .katex-display {
         max-width: 100%;
         overflow-x: auto;
+        overflow-y: hidden;
         margin: 1em 0;
+        padding-bottom: 0.2rem;
     }
     
 }

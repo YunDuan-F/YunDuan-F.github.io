@@ -28,6 +28,7 @@ export function setHue(hue: number): void {
 
 export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 	const root = document.documentElement;
+	root.classList.add("theme-changing");
 	switch (theme) {
 		case LIGHT_MODE:
 			root.classList.remove("dark");
@@ -50,6 +51,12 @@ export function applyThemeToDocument(theme: LIGHT_DARK_MODE) {
 			? expressiveCodeConfig.darkTheme
 			: expressiveCodeConfig.lightTheme,
 	);
+
+	requestAnimationFrame(() => {
+		requestAnimationFrame(() => {
+			root.classList.remove("theme-changing");
+		});
+	});
 }
 
 export function setTheme(theme: LIGHT_DARK_MODE): void {

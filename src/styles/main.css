@@ -1,6 +1,15 @@
 @tailwind components;
 
 @layer components {
+    html.theme-changing,
+    html.theme-changing *,
+    html.theme-changing *::before,
+    html.theme-changing *::after {
+        transition: none !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+    }
+
     .card-base {
         @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
     }
@@ -110,6 +119,13 @@
     .btn-regular-dark.success {
         @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]
     }
+}
+
+.custom-md .katex,
+.custom-md .katex *,
+.custom-md .expressive-code,
+.custom-md .expressive-code * {
+    transition: none !important;
 }
 
 .custom-md img, #post-cover img {
