@@ -97,4 +97,23 @@ The content :spoiler[is hidden **ayyy**]!
 The content :spoiler[is hidden **ayyy**]!
 
 ```
+### collapse
 
+:::collapse[点击展开的标题]
+这里是折叠内容。
+
+可以写 **Markdown**、列表、公式、代码块等。
+```markdown
+代码块
+```
+
+公式：
+$$I = \int \rho R^{2} dV$$
+
+:::
+
+```md
+:::collapse[点击展开的标题]
+折叠内容
+:::
+```
