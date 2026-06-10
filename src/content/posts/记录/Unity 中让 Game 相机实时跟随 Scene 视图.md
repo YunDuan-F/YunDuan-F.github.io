@@ -27,7 +27,7 @@ public static class SceneViewGameCameraSync
     static SceneViewGameCameraSync()
     {
     }
-    [MenuItem("Tools/SceneView Sync/Toggle Sync %#g")]
+    [MenuItem("Tools/SceneView Sync/Toggle Sync %#e")]
     private static void ToggleSync()
     {
         enabledSync = !enabledSync;
@@ -44,10 +44,10 @@ public static class SceneViewGameCameraSync
             cachedGameCamera = null;
         }
     }
-    [MenuItem("Tools/SceneView Sync/Toggle Sync %#g", true)]
+    [MenuItem("Tools/SceneView Sync/Toggle Sync %#e", true)]
     private static bool ToggleSyncValidate()//菜单勾选状态
     {
-        Menu.SetChecked("Tools/SceneView Sync/Toggle Sync %#g", enabledSync);
+        Menu.SetChecked("Tools/SceneView Sync/Toggle Sync %#e", enabledSync);
         return true;
     }
     private static void Hook()
