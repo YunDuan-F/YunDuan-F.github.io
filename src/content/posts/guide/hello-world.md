@@ -6,7 +6,6 @@ image: "./guide.jpg"
 tags: ["Guide", "Test"]
 category: Test
 draft: false
-pinned: true
 license:
     name: "Test"
     url: "https://astro.build/"
