@@ -9,7 +9,7 @@ tags:
 category: Examples
 draft: false
 series:
-  name: "语法"
+  name: 语法
   order: 3
 ---
 
