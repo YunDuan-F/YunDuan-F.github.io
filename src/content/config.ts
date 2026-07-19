@@ -7,6 +7,7 @@ const postsCollection = defineCollection({
 		updated: z.date().optional(),
 		draft: z.boolean().optional().default(false),
 		pinned: z.boolean().optional().default(false),
+		repost: z.boolean().optional().default(false),
 		comments: z.boolean().optional().default(true),
 		description: z.string().optional().default(""),
 		image: z.string().optional().default(""),
@@ -19,15 +20,7 @@ const postsCollection = defineCollection({
 				order: z.number(),
 			})
 			.optional(),
-		license: z
-			.union([
-				z.boolean(),
-				z.object({
-					name: z.string().optional(),
-					url: z.string().optional(),
-				}),
-			])
-			.optional(),
+		license: z.boolean().optional(),
 
 		/* For internal use */
 		prevTitle: z.string().default(""),

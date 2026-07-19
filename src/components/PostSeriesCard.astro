@@ -12,27 +12,29 @@ const { series } = Astro.props;
 const className = Astro.props.class;
 ---
 
-<section class:list={["series-card rounded-2xl border border-[var(--line-divider)] bg-[var(--btn-plain-bg-hover)] px-4 py-4 md:px-5", className]}>
+<section class:list={["series-card overflow-hidden rounded-2xl border border-[var(--line-divider)] bg-[var(--btn-plain-bg-hover)]", className]}>
 	<details class="series-details">
-		<summary class="series-summary -m-2 mb-1 flex cursor-pointer list-none flex-wrap items-center justify-between gap-2 rounded-xl p-2 transition hover:bg-[var(--primary)]/10">
+		<summary class="series-summary flex min-h-16 cursor-pointer list-none items-center justify-between gap-3 px-4 py-2.5 transition hover:bg-[var(--primary)]/10">
 			<div class="flex min-w-0 items-center gap-2">
-				<div class="flex size-8 shrink-0 items-center justify-center rounded-xl bg-[var(--primary)]/10 text-[var(--primary)]">
-					<Icon name="material-symbols:format-list-bulleted-rounded" class="text-lg" />
+				<div class="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)]/10 text-[var(--primary)]">
+					<Icon name="material-symbols:format-list-bulleted-rounded" class="text-base" />
 				</div>
 				<div class="min-w-0">
-					<div class="text-xs font-medium uppercase tracking-wide text-black/40 dark:text-white/40">Series</div>
-					<div class="truncate text-base font-bold text-black/80 dark:text-white/80">{series.name}</div>
+					<div class="text-[0.65rem] font-medium uppercase leading-4 tracking-wide text-black/40 dark:text-white/40">Series</div>
+					<div class="truncate text-[0.95rem] font-bold leading-5 text-black/80 dark:text-white/80">{series.name}</div>
 				</div>
 			</div>
-			<div class="flex shrink-0 items-center gap-2">
-				<div class="rounded-full bg-[var(--primary)]/10 px-3 py-1 text-sm font-semibold text-[var(--primary)]">
+			<div class="flex shrink-0 items-center gap-2.5">
+				<div class="text-[0.8rem] font-semibold tabular-nums text-[var(--primary)]">
 					{series.currentIndex} / {series.posts.length}
 				</div>
-				<Icon name="material-symbols:expand-more-rounded" class="series-toggle text-2xl text-[var(--primary)] transition" />
+				<div class="series-toggle flex size-7 items-center justify-center rounded-full bg-[var(--primary)]/10 text-[var(--primary)] transition">
+					<Icon name="material-symbols:expand-more-rounded" class="text-lg" />
+				</div>
 			</div>
 		</summary>
 
-		<div class="series-list mt-3 flex flex-col gap-2">
+		<div class="series-list flex flex-col gap-1.5 border-t border-[var(--line-divider)] p-2.5">
 			{series.posts.map((post) => (
 				post.isCurrent ? (
 					<div class="series-item series-current flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-[var(--primary)]">
@@ -57,12 +59,12 @@ const className = Astro.props.class;
 </section>
 
 <style>
-	.series-card {
-		box-shadow: 0 12px 32px color-mix(in oklch, var(--primary) 8%, transparent);
-	}
-
 	.series-summary::-webkit-details-marker {
 		display: none;
+	}
+
+	.series-toggle {
+		transition: transform 0.2s ease, background-color 0.2s ease;
 	}
 
 	.series-details:not([open]) .series-toggle {

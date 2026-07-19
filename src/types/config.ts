@@ -108,7 +108,9 @@ export type BlogPostData = {
 	tags: string[];
 	draft?: boolean;
 	pinned?: boolean;
+	repost?: boolean;
 	comments?: boolean;
+	license?: boolean;
 	image?: string;
 	category?: string;
 	series?: {
