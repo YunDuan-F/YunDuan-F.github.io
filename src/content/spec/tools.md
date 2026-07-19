@@ -1,6 +1,18 @@
-# Tools
+# Treasure Chest
 
-Some useful websites and tools I use.
+A small collection of blogs worth revisiting and tools worth keeping nearby.
+
+## Featured Blogs
+
+Thoughtful technical writing and references I return to while learning.
+
+| Name    | Description                                                        | URL                        |
+| ------- | ------------------------------------------------------------------ | -------------------------- |
+| Demofox | Clear, practical notes on rendering, graphics, math, and shaders. | https://blog.demofox.org/  |
+
+## Tools
+
+Useful links and services I am currently exploring.
 
 | Name           | Description                              | URL                        |
 | -------------- | ---------------------------------------- | -------------------------- |
