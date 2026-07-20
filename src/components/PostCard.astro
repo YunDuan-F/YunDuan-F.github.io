@@ -20,6 +20,7 @@ interface Props {
 	description: string;
 	draft: boolean;
 	pinned: boolean;
+	repost: boolean;
 	style: string;
 }
 const {
@@ -33,6 +34,7 @@ const {
 	image,
 	description,
 	pinned,
+	repost,
 	style,
 } = Astro.props;
 const className = Astro.props.class;
@@ -56,13 +58,14 @@ const { remarkPluginFrontmatter } = await entry.render();
     )}
     <div class:list={["post-card-content pointer-events-none relative z-20 pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6", {"pt-12 md:pt-12": pinned, "w-full": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]} >
         <div
-           class="transition w-full block font-bold mb-3 text-3xl text-90
+           class="transition flex w-full items-start gap-2 font-bold mb-3 text-3xl text-90
         group-hover:text-[var(--primary)] dark:group-hover:text-[var(--primary)]
         group-active:text-[var(--title-active)] dark:group-active:text-[var(--title-active)]
         before:w-1 before:h-5 before:rounded-md before:bg-[var(--primary)]
         before:absolute before:top-[35px] before:left-[18px] before:hidden md:before:block
         ">
-            {title}
+            {repost && <span class="mt-1.5 inline-flex shrink-0 rounded-md border border-[var(--primary)] bg-[var(--primary)]/10 px-2 py-1 text-xs font-semibold leading-none text-[var(--primary)]">转载</span>}
+            <span class="min-w-0 flex-1">{title}</span>
         </div>
 
         <!-- metadata -->

@@ -6,10 +6,7 @@ image: "./guide.jpg"
 tags: ["Guide", "Test"]
 category: Test
 draft: false
-license:
-    name: "Test"
-    url: "https://astro.build/"
-
+repost: true #显示转载标签
 ---
 
 > 图片存在于当前路径下，似乎也可以放置远程图片
@@ -48,9 +45,9 @@ license：false
 | `category`    | The category of the post.                                                                                                                                                                                   |
 | `draft`        | If this post is still a draft, which won't be displayed.                                                                                                                                                    |
 |`pinned`| 表示文章是否为置顶|
-|`license`| 表示文章协议内容:<br/>false 表示不显示协议<br/>不写代表默认协议CC BY-NC-SA 4.0<br/>更改协议使用：<br/>license:<br/>  name: "CC BY 4.0"<br/>  url: "https://creativecommons.org/licenses/by/4.0/" 注意url:与name: 后面是有空格的|
+|`license`| 表示文章协议内容:<br/>false 表示不显示协议<br/>不写代表默认协议CC BY-NC-SA 4.0<br/>|
 | `comments` |表示是否开启评论区|
-
+| `repost` |是否为转载|
 
 
 ## Where to Place the Post Files
@@ -95,7 +92,6 @@ published: 2023-10-19
 ## Bilibili
 
 <iframe width="100%" height="468" src="//player.bilibili.com/player.html?bvid=BV1fK4y1s7Qf&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-
 
 
 

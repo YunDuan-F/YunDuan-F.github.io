@@ -53,7 +53,7 @@ export const navBarConfig: NavBarConfig = {
 	// EDIT HERE: navbar "More" dropdown items. Add future header dropdown links here.
 	moreLinks: [
 		{
-			name: "Tools",
+			name: "Treasure",
 			url: "/tools/",
 		},
 		{
